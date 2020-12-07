@@ -1,3 +1,6 @@
+
+task 1
+
 static void Main (string[] args)
         {
             int value1 = 3;
@@ -9,4 +12,57 @@ static void Main (string[] args)
             value1 -= value2;
 
             Console.WriteLine($"value1 = {value1}, value2 = {value2}");
+        }
+        
+ task 2
+ 
+  static void Main (string[] args)
+        {
+            int a = 1;
+            int b = 2;
+            string kak="hello";
+            a = a * 3;
+            b = b + 12;
+            Console.WriteLine($" {a} {b} {kak}");
+        }
+        
+        task 3
+        
+         static void Main (string[] args)
+        {
+            int Milk = Convert.ToInt32(Console.ReadLine());
+            int Matches = Convert.ToInt32(Console.ReadLine());
+            int howmanyMilk = Convert.ToInt32(Console.ReadLine());
+            int howmanyMatches = Convert.ToInt32(Console.ReadLine());
+            int total = Matches * howmanyMatches + Milk * howmanyMilk;
+            Console.WriteLine($"{total}");
+        }
+        
+        task 4
+        
+         static void Main (string[] args)
+        {
+            int number1 = Convert.ToInt32(Console.ReadLine());
+            int number2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"Sum: {number1 + number2}.\n" +
+                              $": Diff {Math.Abs(number1 - number2)}\n" +
+                              $"Multi: {number1 * number2}");
+        }
+        
+      Task 5 
+      
+      static void Main (string[] args)
+        {
+            float w = Convert.ToSingle(Console.ReadLine());
+            float q = Convert.ToSingle(Console.ReadLine());
+            Console.WriteLine($"{q / w}");
+        }
+       Task 6
+       
+       static void Main (string[] args)
+        {
+            short n = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine($"{n / 10 + (n % 10)} ");
+         
+
         }
