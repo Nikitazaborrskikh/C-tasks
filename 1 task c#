@@ -1,0 +1,12 @@
+static void Main (string[] args)
+        {
+            int value1 = 3;
+            int value2 = 4;
+            int value3 = 0;
+
+            value1 += value2;
+            value2 = value1 - value2;
+            value1 -= value2;
+
+            Console.WriteLine($"value1 = {value1}, value2 = {value2}");
+        }
