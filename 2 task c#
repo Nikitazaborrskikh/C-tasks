@@ -1,0 +1,149 @@
+task 1
+
+static void Main (string[] args)
+
+        {
+            Random random = new Random();
+            int rnd1 = random.Next(4);
+            int rnd2 = random.Next(4);
+            Console.WriteLine($"Число {rnd1} {(rnd1 % 2 == 0 ? "Чётное" : "Нечётное")}\n" +
+                              $"Число2 {rnd2} {(rnd2 % 2 == 0 ? "Чётное" : "Нечётное")}");
+        }
+        
+        
+        task 2
+        
+        
+        static void Main(string[] args)
+        {
+            int num1 = Convert.ToInt32(Console.ReadLine());
+            int num2 = Convert.ToInt32(Console.ReadLine());
+            int num3 = Convert.ToInt32(Console.ReadLine());
+            if (num1 > num3 && num1 > num2)
+            {
+                Console.WriteLine($"Число {num1} наибольшее");
+            }
+            else if (num2 > num1 && num2 > num3)
+            {
+                Console.WriteLine($"Число {num2} наибольшее");
+            }
+            else if (num3 > num1 && num3 > num2)
+            {
+                Console.WriteLine($"Число {num3} наибольшее");
+            }
+        }
+        
+        
+        task 3
+        
+        
+         static void Main(string[] args)
+        {
+            int a = Convert.ToInt32(Console.ReadLine());
+            int b = Convert.ToInt32(Console.ReadLine());
+            int c = Convert.ToInt32(Console.ReadLine());
+            if (b * b + c * c < a * a)
+            {
+                Console.WriteLine("Точка внутри");
+            }
+            else if (b * b + c * c == a * a)
+            {
+                Console.WriteLine("Точка на окружности");
+            }
+            else if (b * b + c * c > a * a)
+            {
+                Console.WriteLine("Точка снаружи");
+            }
+        }
+        
+        
+        Task 4
+        
+         static void Main(string[] args)
+        {
+            Random random = new Random();
+            int rnd = random.Next(70);
+            switch (rnd)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    Console.WriteLine($"Число {rnd} в первом диапазоне");
+                    break;
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 19:
+                    Console.WriteLine($"Число {rnd} во втором диапазоне");
+                    break;
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                    Console.WriteLine($"Число {rnd} в третьем диапазоне");
+                    break;
+
+                default:
+                    Console.WriteLine($"Число {rnd} не попало ни в какой диапазон ");
+                    break;
+            }
+        }
+        
+        
+        Task 5
+        
+        
+        static void Main(string[] args)
+        {
+            int year = Convert.ToInt32(Console.ReadLine());
+            if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+                Console.WriteLine("Висоскосный");
+            else
+                Console.WriteLine("Не високосоный");
+        }
+        
+        
+        Task 6 
+        
+         static void Main(string[] args)
+        {
+            {
+                int x = Convert.ToInt32(Console.ReadLine());
+                int y = Convert.ToInt32(Console.ReadLine());
+                int z = Convert.ToInt32(Console.ReadLine());
+                if (x + y < z || x + z < y || y + z < x)
+
+                    Console.WriteLine("Такого треугольника не существует");
+
+                else
+                {
+                    if (x == y || x == z || y == z)
+
+                        Console.WriteLine("Треугольник существует и равнобедренный");
+
+                    else
+
+                        Console.WriteLine("треугольник существует");
+
+                }
+            }
+        }
