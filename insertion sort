@@ -1,0 +1,32 @@
+static void Main(string[] args)
+        {
+            Random rnd = new Random();
+            int[] arr = new int[10];
+            int n = 10, i, x, value, ret;
+
+            for (i = 0; i < n; i++)
+            {
+                arr[i] = rnd.Next(10, 100);
+              
+            }
+            for (i = 1; i < n; i++)
+            {
+                value = arr[i];
+                ret = 0;
+                for (x = i - 1; x >= 0 && ret != 1;)
+                {
+                    if (value < arr[x])
+                    {
+                        arr[x + 1] = arr[x];
+                        x--;
+                        arr[x + 1] = value;
+                    }
+                    else ret = 1;
+                }
+            }
+            
+            for (i = 0; i < n; i++)
+            {
+                Console.Write(arr[i] + " ");
+            }
+        }
