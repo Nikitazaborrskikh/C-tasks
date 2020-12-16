@@ -1,0 +1,115 @@
+task 1
+static void Main(string[] args)
+{
+            int[] array = new int[10];
+            Random random = new Random();
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = random.Next(4);
+                if (array[i] == 0)
+                {
+                    array[i] = 2;
+                }
+            }
+        }
+
+task 2
+
+static void Main(string[] args)
+        {
+            {
+                int kol = Convert.ToInt32(Console.ReadLine());
+                int[] array = new int[kol];
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] = Convert.ToInt32(Console.ReadLine());
+                }
+                for (int i = array.Length - 1; i >= 0; i--)
+                {
+                    Console.WriteLine(array[i]);
+                }
+            }
+            
+            task 3
+            
+            static void Main(string[] args)
+        {
+            int[] array = new int[10];
+            Random random = new Random();
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = random.Next(-7, 9);
+            }
+
+            int maxMinus = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < maxMinus)
+                {
+                    maxMinus = array[i];
+                }
+            }
+
+            if (maxMinus == 0)
+            {
+                Console.WriteLine("отрицательных элементов нет");
+            }
+            else
+            {
+                Console.WriteLine($"наибольший отрицательный элемент {maxMinus}");
+            }
+        }
+        
+        task 4
+        
+        static void Main(string[] args)
+        {
+            int[] array = new int[10];
+            int Sum = 0;
+            int Multi = 1;
+            Random random = new Random();
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = random.Next(-7, 9);
+            }
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                Sum += array[i];
+                Multi *= array[i];
+            }
+            Console.WriteLine($"Сумма: {Sum}\nПроизведение: {Multi}");
+        }
+Task 5 
+
+static void Main(string[] args)
+        {
+            int[] array = new int[10];
+            int p;
+            int a;
+            Random rnd = new Random();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = rnd.Next(0, 39);
+                Console.WriteLine(array[i]);
+            }
+            Console.WriteLine($"Введите позицию: ");
+            p = int.Parse(Console.ReadLine());
+            
+            Console.WriteLine($"Введите значение: ");
+            a = int.Parse(Console.ReadLine());
+
+           
+
+            if (p >= 0 && p < array.Length)
+
+                for (int i = array.Length - 1; i > p; i--)
+                    array[i] = array[i - 1];
+
+            else p = array.Length - 1;
+            array[p] = a;
+
+            for (int i = 0; i < array.Length; i++)
+                Console.Write($"{array[i]} ");
+        }
