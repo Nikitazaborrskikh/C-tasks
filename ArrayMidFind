@@ -1,0 +1,62 @@
+using System;
+using System.Linq;
+using System.Collections;
+
+namespace ConsoleApp9
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ArrayCount array = new ArrayCount();
+            int n = Convert.ToInt32(Console.ReadLine());
+            var arrList = new ArrayList();
+            int count = 0;            
+            double[] arr = new double[n];
+            string[] strarr = new string[n];
+
+            while (count < n)
+            {
+                arr[count] = Math.Round(Convert.ToDouble(Console.ReadLine()), 2);
+                strarr[count] = String.Format("{0:0.00}", arr[count]);
+                count++;
+            }
+            if (arr.Length == 0)
+            {
+                return;
+            }
+            
+            ArrayCount.PrintArray(strarr , arr , ArrayCount.CountMid(arr));
+
+            
+        }
+        
+    }
+    class ArrayCount
+    {
+       public static double CountMid(double[] arr)
+        {
+            double summ = 0;
+            double mid = 0;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+
+                summ += arr[i];
+                mid = summ / arr.Length;
+            }
+            return mid;
+        }
+       public static void PrintArray(string[] strarr, double[] arr, double mid)
+        {
+
+            var arr1 = string.Join(" ", strarr);
+            Console.WriteLine(arr1);
+
+
+            Console.WriteLine(String.Format("{0:0.00}", mid));
+            var nearest = arr.OrderBy(x => Math.Abs((double)x - mid)).First();
+            Console.WriteLine(string.Format("{0:0.00}", nearest));
+        }
+    }
+}
