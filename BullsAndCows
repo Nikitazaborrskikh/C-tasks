@@ -1,0 +1,183 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+
+
+namespace ConsoleApp2
+{
+    class MainProgramm
+    {
+        static void Main()
+        {
+            string path = @"C:\Users\zabor\OneDrive\Рабочий стол\ConsoleApp2\aa.txt";
+            Text("Добро пожаловать в игру быки и коровы!");
+            Thread.Sleep(2000);
+            Console.Clear();
+            Text("Введите 4-ех значное число");
+            Console.WriteLine();
+
+            MakeArray(path);
+
+        }
+        static bool HowManyDigits(string str)
+        {
+            int cnt = 0;
+            for (int i = 0; i < str.Length; ++i)
+            {
+                if (Char.IsDigit(str[i]))
+                    ++cnt;
+            }
+
+            if (cnt < 4 || cnt > 4)
+                return false;
+            else
+                return true;
+        }
+        static string GetRand()
+        {
+            int count = 4;
+            List<int> nums = new List<int>();
+            Random rand = new Random();
+
+            int nr = 0;
+            while (nums.Count != count)
+            {
+                nr = rand.Next(0, 9);
+                if (!nums.Contains(nr))
+
+                    nums.Add(nr);
+            }
+
+            string tmp = string.Empty;
+            foreach (var num in nums)
+                tmp += num;
+
+            return tmp;
+        }
+        static void MakeArray(string path)
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader(path, System.Text.Encoding.Default))
+                {
+                    int count = File.ReadAllLines(path).Length;
+                    string line;
+                    int[] arr = new int[count];
+                    int i = 0;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (Int32.TryParse(line, out int digit) && HowManyDigits(line) && !string.IsNullOrEmpty(line))
+                        {
+                            arr[i] = digit;
+                            i++;
+                        }
+
+                    }
+
+                    var list = arr.ToList();
+                    for (int x = 0; x < arr.Length; x++)
+                    {
+                        if (arr[x] == 0)
+                        {
+                            list.Remove(arr[x]);
+                        }
+                    }
+                    Random rnd = new Random();
+
+                    int DesiredNumber = list[rnd.Next(0, list.Count)];
+                    string DesNumberstr = DesiredNumber.ToString();
+
+                    GameInitialise(DesNumberstr);
+                }
+            }
+            catch (SystemException)
+            {
+                Console.WriteLine("Файл с числами был не найден или в нем нет подходящих чисел");
+                GameInitialise(GetRand());
+
+            }
+        }
+        static bool CheckEnteredNumber(string str)
+        {
+            if (Int32.TryParse(str, out int digit) && HowManyDigits(str) && !string.IsNullOrEmpty(str))
+            {
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Вы ввели неправильные данные, вам нужно ввести 4-ех значное число с неповторяющимися цифрами");
+                return false;
+            }
+        }
+        static string CountBullsAndCows(string a1, string a2)
+        {
+            char[] ar = a1.ToCharArray();
+            char[] ar1 = a2.ToCharArray();
+            int bulls = 0;
+            int cows = 0;
+
+            for (var i = 0; i < ar.Length; i++)
+            {
+                if (ar[i].Equals(ar1[i]))
+                {
+                    bulls++;
+
+                }
+                if (ar[i].Equals(ar1[0]) && i != 0 || ar[i].Equals(ar1[1]) && i != 1 || ar[i].Equals(ar1[2]) && i != 2 || ar[i].Equals(ar1[3]) && i != 3)
+                {
+                    cows++;
+                }
+            }
+            return $"Вы нашли {bulls} быков и {cows} коров";
+        }
+        static void Text(string text)
+        {
+
+            foreach (char letter in text)
+            {
+                Console.Write(letter);
+                Thread.Sleep(50);
+            }
+
+        }
+        static void GameInitialise(string DesNumberstr)
+        {
+            while (true)
+            {
+                string str = Console.ReadLine();
+                if (CheckEnteredNumber(str))
+                {
+                    if (str.Equals(DesNumberstr))
+                    {
+                        Text($"Вы выиграли!, загаданное число было {DesNumberstr} ");
+                        Thread.Sleep(2000);
+                        Console.Clear();
+                        Text("Чтобы начать игру заново нажмите Enter.");
+                        Text(" Чтобы завершить программу нажмите Escape");
+                        if ((Console.ReadKey(true).Key == ConsoleKey.Escape))
+                        {
+                            Console.Clear();
+                            Environment.Exit(0);
+
+
+                        }
+                        if (Console.ReadKey(true).Key == ConsoleKey.Enter)
+                        {
+                            Console.Clear();
+                            Main();
+                        }
+
+                    }
+                    else
+                    {
+                        Console.WriteLine(CountBullsAndCows(str, DesNumberstr));
+                    }
+                }
+
+
+            }
+        }
+    }
+}
